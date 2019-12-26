@@ -1,0 +1,24 @@
+[main_server]
+service_name = "calendarGRPC"
+count_workers = 1
+port = "8080"
+host = "0.0.0.0"
+
+[log]
+level = "DEBUG"
+# В мегабайтах
+max_size = 10
+# В днях
+max_age = 1
+# Кол-во старых логов
+max_backups = 1
+compress = false
+# если раскомментировать filename, будет писать в log
+#filename = "calendarGRPC.log"
+
+[db]
+host = "127.0.0.1"
+port = "5432"
+user = "events"
+name = "events"
+pass = "changeme"

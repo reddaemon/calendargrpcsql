@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package schema;
+
+option go_package = "api";
+
+import "google/protobuf/timestamp.proto";
+
+service EventService {
+    rpc Create (CreateRequest) returns (CreateResponse) {}
+    rpc Read (ReadRequest) returns (ReadResponse) {}
+    rpc Update (UpdateRequest) returns (UpdateResponse) {}
+    rpc Delete (DeleteRequest) returns (DeleteResponse) {}
+}
+
+message Event {
+    uint32 id = 1;
+    string title = 2;
+    string description = 3;
+    google.protobuf.Timestamp date = 4;
+}
+
+message CreateRequest {
+    Event event = 1;
+}
+
+message CreateResponse {
+    uint32 id = 1;
+    bool success = 2;
+}
+
+message ReadRequest {
+    uint32 id = 1;
+}
+
+message ReadResponse {
+    Event event = 1;
+}
+
+message UpdateRequest {
+    uint32 id = 1;
+    Event event = 2;
+}
+
+message UpdateResponse {
+    bool success = 2;
+}
+
+message DeleteRequest {
+    uint32 id = 1;
+}
+
+message DeleteResponse {
+    bool success = 1;
+}
+
